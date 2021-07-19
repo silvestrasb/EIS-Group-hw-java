@@ -45,8 +45,7 @@ public class App {
         PrettyOutput.beautifyPrint("currency watcher");
         PrettyOutput.beautifyPrint("currencies in relation to euro");
 
-        boolean mainLoopStatus = true;
-        while (mainLoopStatus) {
+        while (true) {
             System.out.print("Enter currency code: ");
             String currencyCode = in.nextLine().toUpperCase(Locale.ROOT);
 
@@ -95,18 +94,10 @@ public class App {
                 printEndMenu();
                 String choice = in.nextLine();
                 switch (choice.toUpperCase(Locale.ROOT)) {
-                    case "S":
-                        saveCsvFile(csvCurrencyTimestampString, currencyCode, fromDate, toDate);
-                        break;
-                    case "R":
-                        switchLoop = false;
-                        break;
-                    case "X":
-                        System.exit(-1);
-                        break;
-                    default:
-                        System.out.println("Invalid command, try again.");
-                        break;
+                    case "S" -> saveCsvFile(csvCurrencyTimestampString, currencyCode, fromDate, toDate);
+                    case "R" -> switchLoop = false;
+                    case "X" -> System.exit(-1);
+                    default -> System.out.println("Invalid command, try again.");
                 }
             }
         }
@@ -142,7 +133,7 @@ public class App {
         if (!(currencyTimestampList.size() > 0)) {
             return;
         }
-        Collections.sort(currencyTimestampList, Comparator.comparing(CurrencyTimestamp::getDate));
+        currencyTimestampList.sort(Comparator.comparing(CurrencyTimestamp::getDate));
 
         CurrencyTimestamp earliest = currencyTimestampList.get(0);
         CurrencyTimestamp latest = currencyTimestampList.get(currencyTimestampList.size() - 1);
