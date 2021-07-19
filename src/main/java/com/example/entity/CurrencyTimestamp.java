@@ -18,7 +18,7 @@ public class CurrencyTimestamp {
     private LocalDate date;
 
     public static Double compareTwoValues(CurrencyTimestamp initial, CurrencyTimestamp changed) {
-        return (initial.getRelationToEuro()) / (changed.getRelationToEuro()) - 1;
+        return ((changed.getRelationToEuro()) / (initial.getRelationToEuro())) - 1;
     }
 
 }
