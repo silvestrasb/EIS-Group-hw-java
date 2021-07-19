@@ -17,7 +17,7 @@ import java.util.*;
 public class App {
 
     public static final String SAVE_DIRECTORY = System.getProperty("user.dir").concat("\\currency_watcher");
-    private static final DateTimeFormatter formatter = LbHttpRequest.DATE_FORMATTER;
+    private static final DateTimeFormatter dateFormatter = LbHttpRequest.DATE_FORMATTER;
     private static final String FILE_NAME_FORMAT = "%s_from_%s_to_%s.csv";
     private static final Scanner in = new Scanner(System.in);
 
@@ -81,7 +81,7 @@ public class App {
 
             try {
                 currencyTimestampList = deserializer.csvToCurrencyTimestamp(csvCurrencyTimestampString,
-                        1, 2, 3, formatter);
+                        1, 2, 3, dateFormatter);
             } catch (IOException e) {
                 System.out.println("ERROR: Failed to deserialize from csv to currency timestamp objects.");
                 System.exit(-1);
@@ -115,7 +115,7 @@ public class App {
         LocalDate localDate;
         while (true) {
             try {
-                localDate = LocalDate.parse(in.nextLine(), formatter);
+                localDate = LocalDate.parse(in.nextLine(), dateFormatter);
                 break;
             } catch (DateTimeParseException e) {
                 System.out.println("ERROR: Wrong date format");
