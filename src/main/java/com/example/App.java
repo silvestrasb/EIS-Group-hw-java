@@ -18,6 +18,7 @@ public class App {
 
     public static final String SAVE_DIRECTORY = System.getProperty("user.dir").concat("\\currency_watcher");
     private static final DateTimeFormatter dateFormatter = LbHttpRequest.DATE_FORMATTER;
+    private static final String dateFormatterString = "yyyy-MM-dd";
     private static final String FILE_NAME_FORMAT = "%s_from_%s_to_%s.csv";
     private static final Scanner in = new Scanner(System.in);
 
@@ -60,7 +61,7 @@ public class App {
                 }
             }
 
-            System.out.println("Enter time period: ");
+            System.out.println("Enter time period (" + dateFormatterString + "):");
             System.out.print("From: ");
             LocalDate fromDate = getValidDate();
             System.out.print("To: ");
@@ -119,7 +120,7 @@ public class App {
                 break;
             } catch (DateTimeParseException e) {
                 System.out.println("ERROR: Wrong date format");
-                System.out.println("Expected date format: yyyy-MM-dd");
+                System.out.println("Expected date format: " + dateFormatterString);
                 System.out.println("Try Again:");
             }
         }
