@@ -16,8 +16,8 @@ import static org.junit.Assert.assertEquals;
 
 public class CsvDeserializerTest {
 
-    private CsvDeserializer deserializer = new CsvDeserializer(";");
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private final CsvDeserializer deserializer = new CsvDeserializer(";");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Test
     public void csvToCurrencyCodeList_ValidString_ValidOutputList() throws IOException {
