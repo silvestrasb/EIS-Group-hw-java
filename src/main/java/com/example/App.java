@@ -40,7 +40,7 @@ public class App {
 
         try {
             currencyCodeList = deserializer.csvToCurrencyCodeList(csvCurrencyCodesString, 1);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("ERROR: Failed to deserialize currency code list.");
             System.exit(-1);
         }
