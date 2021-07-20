@@ -32,10 +32,6 @@ public class LbHttpRequest {
     public static String getCsvCurrencyTimestamps(String currencyCode, LocalDate fromDate, LocalDate toDate)
             throws IOException, InterruptedException {
 
-
-        String fromDateParam = fromDate.format(DATE_FORMATTER);
-        String toDateParam = toDate.format(DATE_FORMATTER);
-
         HttpClient client = HttpClient.newHttpClient();
 
         String paramUrl = String.format(LB_GET_CURRENCY_TIMESTAMPS, currencyCode, fromDate, toDate);
