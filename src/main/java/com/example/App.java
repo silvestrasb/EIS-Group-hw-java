@@ -32,6 +32,7 @@ public class App {
             csvCurrencyCodesString = LbHttpRequest.getCurrencyCodes().replace("\"", "");
         } catch (IOException | InterruptedException e) {
             System.out.println("ERROR: failed to get currency codes from server.");
+            System.out.println("Please check your internet connection.");
             System.exit(-1);
         }
 
@@ -75,6 +76,7 @@ public class App {
                 csvCurrencyTimestampString = LbHttpRequest.getCsvCurrencyTimestamps(currencyCode, fromDate, toDate);
             } catch (IOException | InterruptedException e) {
                 System.out.println("ERROR: failed to get currency information from the server.");
+                System.out.println("Please check your internet connection.");
                 System.exit(-1);
             }
 
